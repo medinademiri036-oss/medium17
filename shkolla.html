@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Counters and Variables</title>
+
+    <style>
+        /* CSS Variable */
+        :root {
+            --item-bg-color: lightblue;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        ol {
+            counter-reset: my-counter;
+            list-style: none;
+            padding: 0;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        li {
+            counter-increment: my-counter;
+            background-color: var(--item-bg-color);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+
+        li::before {
+            content: counter(my-counter) ". ";
+            font-weight: bold;
+            color: darkblue;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Counters and Variables</h1>
+
+    <ol>
+        <li>Learn HTML</li>
+        <li>Learn CSS</li>
+        <li>Learn JavaScript</li>
+        <li>Practice Coding</li>
+        <li>Build Projects</li>
+    </ol>
+
+    <button onclick="changeColor()">
+        Change Background Color
+    </button>
+
+    <script>
+        function changeColor() {
+            const colors = [
+                "lightblue",
+                "lightgreen",
+                "lightpink",
+                "lightyellow",
+                "lavender"
+            ];
+
+            const randomColor =
+                colors[Math.floor(Math.random() * colors.length)];
+
+            document.documentElement.style.setProperty(
+                "--item-bg-color",
+                randomColor
+            );
+        }
+    </script>
+
+</body>
+</html>
